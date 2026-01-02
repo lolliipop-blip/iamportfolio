@@ -4,1385 +4,336 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
-  <title>박성곤 | 환경·화학안전 × 데이터/AI 포트폴리오</title>
-  <meta name="description" content="환경학 전공 기반의 ESG·환경/화학안전 및 데이터/AI 역량을 담은 박성곤 포트폴리오" />
+  <title>박성곤 | 포트폴리오</title>
+  <meta name="description" content="환경·화학안전 × 데이터/AI 포트폴리오" />
   <style>
-    /*
-      Single-file, responsive, interactive portfolio
-      - No external libs
-      - Accessible components
-      - Dark mode + Language toggle
-      - Filterable Projects + Timeline
-    */
-
-    :root {
-      --bg: #0b1020;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel2: rgba(255, 255, 255, 0.10);
-      --text: rgba(255, 255, 255, 0.92);
-      --muted: rgba(255, 255, 255, 0.70);
-      --faint: rgba(255, 255, 255, 0.50);
-      --border: rgba(255, 255, 255, 0.14);
-      --accent: #7dd3fc; /* sky */
-      --accent2: #a78bfa; /* violet */
-      --good: #86efac;
-      --warn: #fdba74;
-      --bad: #fca5a5;
-      --shadow: 0 18px 45px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius2: 26px;
-      --maxw: 1120px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    :root{
+      --bg:#0b1020;--panel:rgba(255,255,255,.07);--panel2:rgba(255,255,255,.11);
+      --text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.72);--border:rgba(255,255,255,.14);
+      --a:#7dd3fc;--b:#a78bfa;--shadow:0 16px 38px rgba(0,0,0,.32);
+      --r:18px;--r2:24px;--max:1040px;--sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     }
-
-    :root[data-theme="light"] {
-      --bg: #f6f7fb;
-      --panel: rgba(0, 0, 0, 0.04);
-      --panel2: rgba(0, 0, 0, 0.07);
-      --text: rgba(10, 12, 20, 0.92);
-      --muted: rgba(10, 12, 20, 0.72);
-      --faint: rgba(10, 12, 20, 0.52);
-      --border: rgba(10, 12, 20, 0.14);
-      --shadow: 0 18px 45px rgba(0,0,0,.12);
+    :root[data-theme="light"]{
+      --bg:#f6f7fb;--panel:rgba(0,0,0,.04);--panel2:rgba(0,0,0,.07);
+      --text:rgba(10,12,20,.92);--muted:rgba(10,12,20,.72);--border:rgba(10,12,20,.14);
+      --shadow:0 16px 38px rgba(0,0,0,.12);
     }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      color: var(--text);
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;font-family:var(--sans);color:var(--text);line-height:1.6;overflow-x:hidden;
       background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(125, 211, 252, 0.24), transparent 60%),
-        radial-gradient(1000px 650px at 75% 15%, rgba(167, 139, 250, 0.22), transparent 60%),
-        radial-gradient(1200px 800px at 50% 85%, rgba(134, 239, 172, 0.10), transparent 60%),
+        radial-gradient(1100px 650px at 18% 8%, rgba(125,211,252,.22), transparent 60%),
+        radial-gradient(1000px 650px at 78% 15%, rgba(167,139,250,.20), transparent 60%),
         var(--bg);
-      line-height: 1.6;
-      overflow-x: hidden;
     }
-
-    a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .wrap {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 22px 18px 64px;
+    a{color:inherit;text-decoration:none} a:hover{text-decoration:underline}
+    header{
+      position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0));
     }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0));
-      border-bottom: 1px solid rgba(255,255,255,0);
+    :root[data-theme="light"] header{
+      background:linear-gradient(to bottom, rgba(246,247,251,.92), rgba(246,247,251,0));
     }
-
-    :root[data-theme="light"] header {
-      background: linear-gradient(to bottom, rgba(246,247,251,.92), rgba(246,247,251,0));
+    .wrap{max-width:var(--max);margin:0 auto;padding:16px 16px 54px}
+    .nav{max-width:var(--max);margin:0 auto;padding:12px 16px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{
+      width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--a),var(--b));
+      box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.22)
     }
-
-    .nav {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+    :root[data-theme="light"] .logo{border:1px solid rgba(10,12,20,.10)}
+    .name{display:grid;line-height:1.1}
+    .name b{font-size:14px} .name span{font-size:12px;color:var(--muted)}
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{
+      border:1px solid var(--border);background:var(--panel);color:var(--text);
+      padding:9px 11px;border-radius:12px;cursor:pointer;transition:.18s ease;
+      font-size:13px;display:inline-flex;gap:8px;align-items:center
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 180px;
+    .btn:hover{transform:translateY(-1px);background:var(--panel2)} .btn:active{transform:translateY(0)}
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius:var(--r2);box-shadow:var(--shadow);overflow:hidden
     }
-
-    .logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background:
-        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.55), transparent 60%),
-        linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.25);
+    :root[data-theme="light"] .card{background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.76));}
+    .pad{padding:18px}
+    h1{margin:10px 0 8px;font-size:30px;line-height:1.15;letter-spacing:-.5px}
+    h2{margin:0 0 10px;font-size:17px;letter-spacing:-.25px}
+    .muted{color:var(--muted)}
+    .pill{
+      font-family:var(--mono);font-size:11px;padding:6px 8px;border-radius:999px;
+      border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--muted)
     }
-
-    :root[data-theme="light"] .logo {
-      border: 1px solid rgba(10,12,20,.10);
+    .hero{margin-top:14px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{padding:7px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);font-size:12px;color:var(--muted)}
+    :root[data-theme="light"] .chip{background:rgba(0,0,0,.03)}
+    .grid{display:grid;gap:12px}
+    .mini{border:1px solid var(--border);background:var(--panel);border-radius:var(--r);padding:12px}
+    .mini b{display:block;font-size:13px} .mini span{font-size:12px;color:var(--muted)}
+    .section{margin-top:16px}
+    .toolbar{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      padding:12px;border:1px solid var(--border);background:var(--panel);border-radius:var(--r)
     }
-
-    .brand .name {
-      display: grid;
-      line-height: 1.1;
+    .search{display:flex;gap:10px;align-items:center;flex:1;min-width:220px}
+    input{
+      width:100%;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text);
+      padding:10px 12px;border-radius:12px;outline:none;font-size:13px
     }
-
-    .brand .name b {
-      font-size: 14px;
-      letter-spacing: .2px;
+    :root[data-theme="light"] input{background:rgba(0,0,0,.03)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .filter{
+      padding:8px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);
+      color:var(--muted);cursor:pointer;font-size:12px;user-select:none;transition:.18s ease
     }
-
-    .brand .name span {
-      font-size: 12px;
-      color: var(--muted);
+    .filter[aria-pressed="true"]{
+      background:linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,139,250,.18));
+      color:var(--text);border-color:rgba(125,211,252,.35)
     }
-
-    .navlinks {
-      display: none;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:12px}
+    .pcard{
+      grid-column:span 12;border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--r2);padding:14px;box-shadow:0 10px 25px rgba(0,0,0,.12);transition:.2s ease
     }
-
-    .navlinks a {
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--muted);
-      transition: .2s ease;
-      font-size: 13px;
+    :root[data-theme="light"] .pcard{background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));}
+    .pcard:hover{transform:translateY(-2px)}
+    .top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .tag{padding:7px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);font-size:12px;color:var(--muted)}
+    .pcard h3{margin:10px 0 6px;font-size:15px;letter-spacing:-.2px}
+    .pcard p{margin:0;font-size:13px;color:var(--muted)}
+    .pcard ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:13px}
+    .pcard li{margin:6px 0}
+    footer{margin-top:18px;color:var(--muted);font-size:12px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;padding:14px 6px 0}
+    .toast{
+      position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
+      padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:rgba(0,0,0,.40);
+      color:rgba(255,255,255,.92);backdrop-filter:blur(10px);box-shadow:var(--shadow);
+      opacity:0;pointer-events:none;transition:.22s ease;max-width:min(560px, calc(100vw - 20px));font-size:12.5px
     }
-
-    .navlinks a:hover {
-      border-color: var(--border);
-      background: var(--panel);
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: .2s ease;
-      box-shadow: 0 8px 22px rgba(0,0,0,.12);
-      font-size: 13px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      user-select: none;
-    }
-
-    .btn:hover { transform: translateY(-1px); background: var(--panel2); }
-    .btn:active { transform: translateY(0px); }
-
-    .icon {
-      width: 16px;
-      height: 16px;
-      display: inline-block;
-    }
-
-    .hero {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    :root[data-theme="light"] .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.76));
-    }
-
-    .card .pad { padding: 22px; }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 12px;
-      width: fit-content;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--good);
-      box-shadow: 0 0 0 6px rgba(134,239,172,.12);
-    }
-
-    h1 {
-      margin: 14px 0 8px;
-      font-size: 34px;
-      line-height: 1.15;
-      letter-spacing: -0.6px;
-    }
-
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14.5px;
-      max-width: 62ch;
-    }
-
-    .chips {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .chip {
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    :root[data-theme="light"] .chip {
-      background: rgba(0,0,0,.03);
-    }
-
-    .grid2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .mini {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: var(--radius);
-      padding: 14px;
-    }
-
-    .mini b { display: block; font-size: 13px; }
-    .mini span { color: var(--muted); font-size: 12px; }
-
-    .side {
-      display: grid;
-      gap: 16px;
-    }
-
-    .photo {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      border-radius: var(--radius2);
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(220px 220px at 30% 20%, rgba(125, 211, 252, 0.32), transparent 60%),
-        radial-gradient(260px 260px at 70% 65%, rgba(167, 139, 250, 0.26), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .photo .badge {
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      right: 14px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.22);
-      padding: 12px 12px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    :root[data-theme="light"] .photo .badge { background: rgba(255,255,255,.70); }
-
-    .badge b { display: block; font-size: 13px; }
-    .badge span { color: var(--muted); font-size: 12px; }
-
-    .section {
-      margin-top: 18px;
-      padding-top: 10px;
-    }
-
-    .section h2 {
-      font-size: 18px;
-      letter-spacing: -0.3px;
-      margin: 0 0 10px;
-    }
-
-    .muted { color: var(--muted); }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: var(--radius);
-    }
-
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-      min-width: 220px;
-    }
-
-    .search input {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      outline: none;
-      font-size: 13px;
-    }
-
-    :root[data-theme="light"] .search input {
-      background: rgba(0,0,0,.03);
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter {
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 12px;
-      user-select: none;
-      transition: .2s ease;
-    }
-
-    .filter[aria-pressed="true"] {
-      background: linear-gradient(135deg, rgba(125,211,252,.20), rgba(167,139,250,.18));
-      color: var(--text);
-      border-color: rgba(125,211,252,.35);
-    }
-
-    .cols {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-
-    .pcard {
-      grid-column: span 12;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border-radius: var(--radius2);
-      padding: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.12);
-      position: relative;
-      overflow: hidden;
-      transition: .22s ease;
-    }
-
-    :root[data-theme="light"] .pcard {
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
-    }
-
-    .pcard:hover { transform: translateY(-2px); }
-
-    .pcard .top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .pcard h3 {
-      margin: 10px 0 6px;
-      font-size: 16px;
-      letter-spacing: -0.25px;
-    }
-
-    .pcard p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .pcard ul {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .pcard li { margin: 6px 0; }
-
-    details {
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      background: var(--panel);
-      padding: 14px 16px;
-    }
-
-    details + details { margin-top: 12px; }
-
-    summary {
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    summary::-webkit-details-marker { display:none; }
-
-    .sum {
-      display: grid;
-      gap: 2px;
-    }
-
-    .sum b { font-size: 14px; }
-    .sum span { font-size: 12px; color: var(--muted); }
-
-    .pill {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 6px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color: var(--faint);
-      white-space: nowrap;
-    }
-
-    footer {
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 6px 0;
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.40);
-      color: rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      opacity: 0;
-      pointer-events: none;
-      transition: .25s ease;
-      max-width: min(560px, calc(100vw - 20px));
-      font-size: 12.5px;
-    }
-
-    :root[data-theme="light"] .toast {
-      background: rgba(255,255,255,.88);
-      color: rgba(10,12,20,.92);
-    }
-
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(-2px); }
-
-    /* Responsive */
-    @media (min-width: 840px) {
-      .navlinks { display: flex; }
-      .row { grid-template-columns: 0.95fr 1.05fr; }
-      .cols { grid-template-columns: 1fr 1fr; }
-      .pcard { grid-column: span 6; }
-    }
-
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .side { grid-template-columns: 1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .btn, .pcard { transition: none; }
-    }
-
-    /* Print */
-    @media print {
-      header, .actions, .toolbar, .toast { display: none !important; }
-      body { background: #fff; }
-      :root { --text: #111; --muted: #333; --border: rgba(0,0,0,.18); --panel: #f7f7f7; --panel2: #eee; }
-      .card, .pcard, details { box-shadow: none; }
-      a { text-decoration: none; }
+    :root[data-theme="light"] .toast{background:rgba(255,255,255,.88);color:rgba(10,12,20,.92)}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-2px)}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}}
+    @media (min-width:840px){.pcard{grid-column:span 6}}
+    @media print{
+      header,.toolbar,.toast{display:none!important} body{background:#fff}
+      :root{--text:#111;--muted:#333;--border:rgba(0,0,0,.18);--panel:#f7f7f7;--panel2:#eee}
+      .card,.pcard{box-shadow:none}
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="nav" role="navigation" aria-label="상단 내비게이션">
-      <div class="brand" aria-label="브랜드">
+    <div class="nav">
+      <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="name">
-          <b data-i18n="name">박성곤</b>
-          <span data-i18n="headline">환경·화학안전 × 데이터/AI</span>
+          <b>박성곤</b>
+          <span>환경·화학안전 × 데이터/AI</span>
         </div>
       </div>
-
-      <nav class="navlinks" aria-label="섹션 이동">
-        <a href="#about" data-i18n="nav_about">소개</a>
-        <a href="#experience" data-i18n="nav_exp">경험</a>
-        <a href="#projects" data-i18n="nav_proj">프로젝트</a>
-        <a href="#skills" data-i18n="nav_skills">역량</a>
-        <a href="#certs" data-i18n="nav_certs">자격/교육</a>
-        <a href="#contact" data-i18n="nav_contact">연락</a>
-      </nav>
-
       <div class="actions">
-        <button class="btn" id="btnLang" type="button" aria-label="언어 전환">
-          <span class="icon" aria-hidden="true">🌐</span>
-          <span id="langLabel">KO</span>
-        </button>
-        <button class="btn" id="btnTheme" type="button" aria-label="테마 전환">
-          <span class="icon" aria-hidden="true">🌓</span>
-          <span data-i18n="theme">테마</span>
-        </button>
-        <button class="btn" id="btnPrint" type="button" aria-label="인쇄 또는 PDF 저장">
-          <span class="icon" aria-hidden="true">🖨️</span>
-          <span data-i18n="print">PDF</span>
-        </button>
+        <button class="btn" id="btnTheme" type="button">🌓 테마</button>
+        <button class="btn" id="btnPrint" type="button">🖨️ PDF</button>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- HERO -->
-    <section class="hero" aria-label="소개 헤더">
-      <div class="card">
-        <div class="pad">
-          <div class="kicker">
-            <span class="dot" aria-hidden="true"></span>
-            <span data-i18n="kicker">규제 이해 → 구조화 → 자동화까지, 실무형 환경/화학안전</span>
-          </div>
-
-          <h1 data-i18n="hero_title">안전과 규제를 ‘문서’가 아니라 ‘시스템’으로 바꾸는 사람</h1>
-          <p class="subtitle" data-i18n="hero_sub">
-            환경학 전공 기반으로 ESG·환경안전·화학안전 업무에서 반복되는 점검/문서/관리 업무를 데이터로 구조화하고,
-            보고 가능한 결과물로 전환해왔습니다. 현재 Microsoft AI School 활동을 통해 데이터 사고와 자동화 역량을 확장 중입니다.
-          </p>
-
-          <div class="chips" aria-label="핵심 키워드">
-            <span class="chip">ESG 가이드북(중소기업)</span>
-            <span class="chip">환경/화학 법규 구조화</span>
-            <span class="chip">그린워싱 리스크 관점</span>
-            <span class="chip">Excel/CSV 정리·자동화</span>
-            <span class="chip">LCA 관심</span>
-            <span class="chip">Microsoft AI School</span>
-          </div>
-
-          <div class="grid2" aria-label="요약 카드">
-            <div class="mini">
-              <b data-i18n="mini1_title">포지션</b>
-              <span data-i18n="mini1_sub">환경안전 / 화학안전 / ESG 실사·컴플라이언스</span>
-            </div>
-            <div class="mini">
-              <b data-i18n="mini2_title">강점</b>
-              <span data-i18n="mini2_sub">법규 → 체크리스트/서식 → 데이터화 → 운영 프로세스</span>
-            </div>
-          </div>
-
-          <div style="margin-top: 14px; display:flex; gap:10px; flex-wrap: wrap;">
-            <a class="btn" href="#projects" data-i18n="cta_projects">프로젝트 보기</a>
-            <button class="btn" type="button" id="btnCopySummary" data-i18n="cta_copy">요약 한 줄 복사</button>
-          </div>
+    <section class="hero">
+      <div class="card"><div class="pad">
+        <span class="pill">규제 이해 → 구조화 → 자동화</span>
+        <h1>안전과 규제를 ‘문서’가 아니라 ‘시스템’으로 바꾸는 사람</h1>
+        <p class="muted">
+          환경학 전공 기반으로 ESG·환경안전·화학안전 업무의 점검/문서/관리 흐름을 구조화해왔습니다.
+          현재 Microsoft AI School 활동을 통해 데이터 처리·자동화 역량을 확장 중입니다.
+        </p>
+        <div class="chips">
+          <span class="chip">ESG 가이드북</span><span class="chip">법규/체크리스트</span><span class="chip">그린워싱 리스크</span>
+          <span class="chip">Excel/CSV</span><span class="chip">LCA 관심</span><span class="chip">AI School</span>
         </div>
-      </div>
-
-      <div class="side">
-        <div class="photo" aria-label="프로필 이미지 자리">
-          <!-- Replace with your photo if you want:
-               <img src="your-photo.jpg" alt="박성곤" style="width:100%;height:100%;object-fit:cover;" />
-          -->
-          <div class="badge">
-            <b data-i18n="badge_title">박성곤 · Portfolio</b>
-            <span data-i18n="badge_sub">환경·화학안전 | 데이터/AI 기반 실무형 결과물</span>
-          </div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn" id="btnCopyPitch" type="button">📋 한 줄 복사</button>
+          <button class="btn" id="btnEditPitch" type="button">✏️ 문구 편집</button>
         </div>
+      </div></div>
 
-        <div class="card">
-          <div class="pad">
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
-              <b data-i18n="snapshot">Quick Snapshot</b>
-              <span class="pill" id="lastUpdated">Last updated: —</span>
-            </div>
-            <div style="margin-top: 12px; display:grid; gap:10px;">
-              <div class="mini">
-                <b data-i18n="snap1_title">학부 연구/논문</b>
-                <span data-i18n="snap1_sub">한강(수생태) 기반 데이터 분석 경험</span>
-              </div>
-              <div class="mini">
-                <b data-i18n="snap2_title">인턴십</b>
-                <span data-i18n="snap2_sub">환경·EHS 규제 정리 및 ESG 가이드북 제작 참여</span>
-              </div>
-              <div class="mini">
-                <b data-i18n="snap3_title">현재</b>
-                <span data-i18n="snap3_sub">Microsoft AI School 활동 중(기초부터 실무 적용)</span>
-              </div>
-            </div>
-          </div>
+      <div class="card"><div class="pad">
+        <h2>Quick</h2>
+        <div class="grid">
+          <div class="mini"><b>전공/논문</b><span>수생태 데이터 분석(이상 패턴 해석)</span></div>
+          <div class="mini"><b>인턴</b><span>환경·EHS 규제 정리 + 중소기업 ESG 가이드북</span></div>
+          <div class="mini"><b>현재</b><span>Microsoft AI School(데이터/자동화)</span></div>
+          <div class="mini"><b>자격</b><span>산업안전기사(취득) + 추가 준비</span></div>
         </div>
-      </div>
+        <p class="muted" style="margin:12px 0 0;"><span class="pill" id="lastUpdated">Last updated: —</span></p>
+      </div></div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section" aria-label="소개">
-      <div class="row">
-        <div class="card">
-          <div class="pad">
-            <h2 data-i18n="about_title">소개</h2>
-            <p class="muted" data-i18n="about_body">
-              환경학 전공을 바탕으로 대기·수질 등 환경매체를 공부했고, 실무에서는 "규정이 현장 운영으로 번역되는 과정"에 관심을 가져왔습니다.
-              특히 ESG 인턴십에서 법규·서식·체크리스트를 구조화하고, 국내·해외 ESG 보고서를 비교하며 그린워싱 리스크를 발견/정리했던 경험이 있습니다.
-              지금은 Microsoft AI School에서 데이터 처리·자동화 역량을 확장하며, 반복업무를 줄이고 더 빠르게 의사결정 가능한 자료를 만드는 방향으로 성장 중입니다.
-            </p>
+    <section class="section">
+      <div class="card"><div class="pad">
+        <h2>프로젝트</h2>
+        <p class="muted">검색/필터로 필요한 것만 빠르게 보세요.</p>
 
-            <div class="grid2" style="margin-top: 10px;">
-              <div class="mini">
-                <b data-i18n="about_focus_title">관심 영역</b>
-                <span data-i18n="about_focus_sub">화학안전/환경안전, ESG 컴플라이언스, LCA(전과정평가)</span>
-              </div>
-              <div class="mini">
-                <b data-i18n="about_style_title">일하는 방식</b>
-                <span data-i18n="about_style_sub">이상값·예외 케이스를 "그냥 제외"하지 않고 원인을 추적해 구조화</span>
-              </div>
-            </div>
+        <div class="toolbar">
+          <div class="search"><span>🔎</span><input id="q" type="search" placeholder="예: ESG, 체크리스트, 데이터" /></div>
+          <div class="filters">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" type="button" data-filter="esg" aria-pressed="false">ESG</button>
+            <button class="filter" type="button" data-filter="safety" aria-pressed="false">EHS</button>
+            <button class="filter" type="button" data-filter="data" aria-pressed="false">Data</button>
+            <button class="filter" type="button" data-filter="ai" aria-pressed="false">AI</button>
           </div>
         </div>
 
-        <div class="card">
-          <div class="pad">
-            <h2 data-i18n="highlights_title">하이라이트</h2>
-            <details open>
-              <summary>
-                <div class="sum">
-                  <b data-i18n="hl1_title">ESG 인턴십: 가이드북/법규 구조화</b>
-                  <span data-i18n="hl1_sub">중소기업 대상 실무 체크리스트와 문서 체계 정리</span>
-                </div>
-                <span class="pill">ESG · EHS</span>
-              </summary>
-              <div class="muted" style="margin-top: 10px;">
-                <ul>
-                  <li data-i18n="hl1_li1">국내 환경/안전 법령을 실사·점검 관점으로 재구성(체크리스트/서식 중심)</li>
-                  <li data-i18n="hl1_li2">사업장 반복 이슈를 기준으로 “현장에서 쓰이는 형태”의 구조 제안</li>
-                  <li data-i18n="hl1_li3">보고서 작성 시 과장/그린워싱 리스크 포인트 정리</li>
-                </ul>
-              </div>
-            </details>
-
-            <details>
-              <summary>
-                <div class="sum">
-                  <b data-i18n="hl2_title">졸업논문/데이터 분석: 수생태 지표 해석</b>
-                  <span data-i18n="hl2_sub">패턴 탐색 → 원인 가설 → 비교 분석(강우/계절/방류량 등)</span>
-                </div>
-                <span class="pill">Data</span>
-              </summary>
-              <div class="muted" style="margin-top: 10px;">
-                <ul>
-                  <li data-i18n="hl2_li1">이상값이 특정 시기에 집중되는 패턴을 발견</li>
-                  <li data-i18n="hl2_li2">강우량·계절 변화·댐 방류량 등의 변수와 비교하며 원인 추적</li>
-                  <li data-i18n="hl2_li3">Excel 시각화로 결과를 설명 가능한 형태로 정리</li>
-                </ul>
-              </div>
-            </details>
-
-            <details>
-              <summary>
-                <div class="sum">
-                  <b data-i18n="hl3_title">Microsoft AI School: 기초→실무 적용</b>
-                  <span data-i18n="hl3_sub">데이터 처리/자동화 기반으로 ESG·화학안전 서비스 아이디어 확장</span>
-                </div>
-                <span class="pill">AI/Automation</span>
-              </summary>
-              <div class="muted" style="margin-top: 10px;">
-                <ul>
-                  <li data-i18n="hl3_li1">파이썬 기초 문법 및 데이터 처리 학습(진행형)</li>
-                  <li data-i18n="hl3_li2">규제/보고 업무에 적용 가능한 자동화 아이디어 설계</li>
-                  <li data-i18n="hl3_li3">SME 대상 지속가능성 대시보드·기록 자동화 프로젝트 구상</li>
-                </ul>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
+        <div class="cards" id="projectCards"></div>
+      </div></div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section" aria-label="경험">
-      <div class="card">
-        <div class="pad">
-          <h2 data-i18n="exp_title">경험 타임라인</h2>
-          <p class="muted" data-i18n="exp_sub">기간/기관/성과는 공개 가능한 범위에서 요약했습니다. 필요한 경우 세부 내용은 이력서/면접에서 추가 설명 가능합니다.</p>
-
-          <div class="cards" id="timeline"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section" aria-label="프로젝트">
-      <div class="card">
-        <div class="pad">
-          <h2 data-i18n="proj_title">프로젝트</h2>
-          <p class="muted" data-i18n="proj_sub">키워드로 검색하거나 태그로 필터링해보세요.</p>
-
-          <div class="toolbar" role="region" aria-label="프로젝트 검색 및 필터">
-            <div class="search" aria-label="검색">
-              <span aria-hidden="true">🔎</span>
-              <input id="q" type="search" placeholder="예: ESG, 체크리스트, 그린워싱, 데이터" aria-label="프로젝트 검색" />
-            </div>
-            <div class="filters" aria-label="필터">
-              <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
-              <button class="filter" type="button" data-filter="esg" aria-pressed="false">ESG</button>
-              <button class="filter" type="button" data-filter="safety" aria-pressed="false">EHS/안전</button>
-              <button class="filter" type="button" data-filter="data" aria-pressed="false">Data</button>
-              <button class="filter" type="button" data-filter="ai" aria-pressed="false">AI/자동화</button>
-            </div>
+    <section class="section">
+      <div class="card"><div class="pad">
+        <h2>연락</h2>
+        <div class="grid" style="grid-template-columns:1fr; gap:10px;">
+          <div class="mini">
+            <b>Email</b><span class="muted">you@example.com</span>
+            <div style="margin-top:10px"><button class="btn" data-copy="you@example.com" type="button">복사</button></div>
           </div>
-
-          <div class="cards" id="projectCards" style="margin-top: 12px;"></div>
+          <div class="mini"><b>Links</b><span class="muted">LinkedIn · GitHub · Notion</span></div>
         </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section" aria-label="역량">
-      <div class="row">
-        <div class="card">
-          <div class="pad">
-            <h2 data-i18n="skills_title">역량</h2>
-            <p class="muted" data-i18n="skills_sub">“AI를 만든다”보다, “안전/규제 업무를 데이터로 굴린다”에 맞춘 스택입니다.</p>
-
-            <div class="cols" style="margin-top: 12px;">
-              <div class="mini">
-                <b data-i18n="sk1_title">규제/컴플라이언스</b>
-                <span data-i18n="sk1_sub">환경·화학안전 관련 법규 구조 이해 · 점검/실사 체크리스트화</span>
-              </div>
-              <div class="mini">
-                <b data-i18n="sk2_title">데이터 처리</b>
-                <span data-i18n="sk2_sub">Excel 중심 정리/시각화 · CSV 구조화 · 기본 통계적 해석</span>
-              </div>
-              <div class="mini">
-                <b data-i18n="sk3_title">자동화/AI 활용</b>
-                <span data-i18n="sk3_sub">반복 문서 작업 자동화 아이디어 · 프롬프트 기반 요약/정리 · 템플릿화</span>
-              </div>
-              <div class="mini">
-                <b data-i18n="sk4_title">ESG/보고</b>
-                <span data-i18n="sk4_sub">국내·해외 보고서 비교(예: 자동차/전기차 기업 사례) · 그린워싱 관점</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <h2 data-i18n="proof_title">작업물로 증명하는 방식</h2>
-            <p class="muted" data-i18n="proof_sub">아래 항목은 “포트폴리오 첨부 자료”로 연결하기 좋은 형태입니다.</p>
-            <div class="muted">
-              <ul>
-                <li data-i18n="pf1">법규/서식/별표 → 사업장 체크리스트(엑셀) 변환 예시</li>
-                <li data-i18n="pf2">점검 결과(위반/시정/재발방지) 이력 관리 템플릿</li>
-                <li data-i18n="pf3">ESG 보고서 비교표(지표/근거/리스크) 및 코멘트</li>
-                <li data-i18n="pf4">데이터 이상값 탐색/해석 과정(그래프 + 설명)</li>
-              </ul>
-            </div>
-            <div style="display:flex; gap:10px; flex-wrap: wrap; margin-top: 12px;">
-              <button class="btn" type="button" id="btnDownloadJSON" data-i18n="btn_export">프로젝트 데이터(JSON) 내보내기</button>
-              <button class="btn" type="button" id="btnFocus" data-i18n="btn_focus">프로젝트만 보기(포커스)</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTS / EDUCATION -->
-    <section id="certs" class="section" aria-label="자격 및 교육">
-      <div class="card">
-        <div class="pad">
-          <h2 data-i18n="cert_title">자격·교육</h2>
-          <div class="cards" id="certCards"></div>
-          <p class="muted" style="margin-top: 10px;" data-i18n="cert_note">
-            * 자격증/교육 항목은 공개 가능한 정보 기준으로 작성했습니다. 정확한 명칭·취득일은 원하시면 제가 텍스트만 바꿔드릴게요.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section" aria-label="연락">
-      <div class="row">
-        <div class="card">
-          <div class="pad">
-            <h2 data-i18n="contact_title">연락</h2>
-            <p class="muted" data-i18n="contact_sub">
-              아래 정보는 복사해서 사용하세요. (이메일/링크드인/깃허브 등은 본인 정보로 교체)
-            </p>
-            <div class="cols" style="margin-top: 12px;">
-              <div class="mini">
-                <b>Email</b>
-                <span class="muted">you@example.com</span>
-                <div style="margin-top: 10px;">
-                  <button class="btn" type="button" data-copy="you@example.com">복사</button>
-                </div>
-              </div>
-              <div class="mini">
-                <b>Links</b>
-                <span class="muted">LinkedIn · GitHub · Notion</span>
-                <div style="margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap;">
-                  <a class="btn" href="#" onclick="return false;">LinkedIn</a>
-                  <a class="btn" href="#" onclick="return false;">GitHub</a>
-                  <a class="btn" href="#" onclick="return false;">Notion</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="pad">
-            <h2 data-i18n="pitch_title">한 줄 소개(복사용)</h2>
-            <p class="muted" id="oneLiner">
-              환경·화학안전 규제를 점검/문서 형태에만 두지 않고, 체크리스트·템플릿·데이터 구조로 바꿔 현장에서 굴러가게 만드는 사람입니다.
-            </p>
-            <div style="display:flex; gap:10px; flex-wrap: wrap;">
-              <button class="btn" type="button" id="btnCopyPitch">복사</button>
-              <button class="btn" type="button" id="btnEditPitch" data-i18n="btn_edit">문구 편집</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div></div>
     </section>
 
     <footer>
-      <span>© <span id="year"></span> <span data-i18n="footer_name">박성곤</span></span>
-      <span class="muted" data-i18n="footer_note">Single-file HTML · Responsive · Keyboard-friendly</span>
+      <span>© <span id="year"></span> 박성곤</span>
+      <span class="muted">Single-file · Responsive</span>
     </footer>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // ------------------------------
-    // Content (Edit here)
-    // ------------------------------
-
-    const CONTENT = {
-      ko: {
-        name: "박성곤",
-        headline: "환경·화학안전 × 데이터/AI",
-        kicker: "규제 이해 → 구조화 → 자동화까지, 실무형 환경/화학안전",
-        hero_title: "안전과 규제를 ‘문서’가 아니라 ‘시스템’으로 바꾸는 사람",
-        hero_sub:
-          "환경학 전공 기반으로 ESG·환경안전·화학안전 업무에서 반복되는 점검/문서/관리 업무를 데이터로 구조화하고, 보고 가능한 결과물로 전환해왔습니다. 현재 Microsoft AI School 활동을 통해 데이터 사고와 자동화 역량을 확장 중입니다.",
-        mini1_title: "포지션",
-        mini1_sub: "환경안전 / 화학안전 / ESG 실사·컴플라이언스",
-        mini2_title: "강점",
-        mini2_sub: "법규 → 체크리스트/서식 → 데이터화 → 운영 프로세스",
-        cta_projects: "프로젝트 보기",
-        cta_copy: "요약 한 줄 복사",
-        snapshot: "Quick Snapshot",
-        snap1_title: "학부 연구/논문",
-        snap1_sub: "수생태 데이터 분석 경험(패턴 탐색/해석)",
-        snap2_title: "인턴십",
-        snap2_sub: "환경·EHS 규제 정리 및 ESG 가이드북 제작 참여",
-        snap3_title: "현재",
-        snap3_sub: "Microsoft AI School 활동 중(기초부터 실무 적용)",
-        about_title: "소개",
-        about_body:
-          "환경학 전공을 바탕으로 대기·수질 등 환경매체를 공부했고, 실무에서는 ‘규정이 현장 운영으로 번역되는 과정’에 관심을 가져왔습니다. 특히 ESG 인턴십에서 법규·서식·체크리스트를 구조화하고, 국내·해외 ESG 보고서를 비교하며 그린워싱 리스크를 발견/정리했던 경험이 있습니다. 지금은 Microsoft AI School에서 데이터 처리·자동화 역량을 확장하며, 반복업무를 줄이고 더 빠르게 의사결정 가능한 자료를 만드는 방향으로 성장 중입니다.",
-        about_focus_title: "관심 영역",
-        about_focus_sub: "화학안전/환경안전, ESG 컴플라이언스, LCA(전과정평가)",
-        about_style_title: "일하는 방식",
-        about_style_sub: "이상값·예외 케이스를 그냥 제외하지 않고 원인을 추적해 구조화",
-        highlights_title: "하이라이트",
-        hl1_title: "ESG 인턴십: 가이드북/법규 구조화",
-        hl1_sub: "중소기업 대상 실무 체크리스트와 문서 체계 정리",
-        hl1_li1: "국내 환경/안전 법령을 실사·점검 관점으로 재구성(체크리스트/서식 중심)",
-        hl1_li2: "사업장 반복 이슈를 기준으로 ‘현장에서 쓰이는 형태’의 구조 제안",
-        hl1_li3: "보고서 작성 시 과장/그린워싱 리스크 포인트 정리",
-        hl2_title: "졸업논문/데이터 분석: 수생태 지표 해석",
-        hl2_sub: "패턴 탐색 → 원인 가설 → 비교 분석(강우/계절/방류량 등)",
-        hl2_li1: "이상값이 특정 시기에 집중되는 패턴을 발견",
-        hl2_li2: "강우량·계절 변화·댐 방류량 등의 변수와 비교하며 원인 추적",
-        hl2_li3: "Excel 시각화로 결과를 설명 가능한 형태로 정리",
-        hl3_title: "Microsoft AI School: 기초→실무 적용",
-        hl3_sub: "데이터 처리/자동화 기반으로 ESG·화학안전 서비스 아이디어 확장",
-        hl3_li1: "파이썬 기초 문법 및 데이터 처리 학습(진행형)",
-        hl3_li2: "규제/보고 업무에 적용 가능한 자동화 아이디어 설계",
-        hl3_li3: "SME 대상 지속가능성 대시보드·기록 자동화 프로젝트 구상",
-        exp_title: "경험 타임라인",
-        exp_sub: "기간/기관/성과는 공개 가능한 범위에서 요약했습니다. 필요한 경우 세부 내용은 이력서/면접에서 추가 설명 가능합니다.",
-        proj_title: "프로젝트",
-        proj_sub: "키워드로 검색하거나 태그로 필터링해보세요.",
-        skills_title: "역량",
-        skills_sub: "‘AI를 만든다’보다, ‘안전/규제 업무를 데이터로 굴린다’에 맞춘 스택입니다.",
-        sk1_title: "규제/컴플라이언스",
-        sk1_sub: "환경·화학안전 관련 법규 구조 이해 · 점검/실사 체크리스트화",
-        sk2_title: "데이터 처리",
-        sk2_sub: "Excel 중심 정리/시각화 · CSV 구조화 · 기본 통계적 해석",
-        sk3_title: "자동화/AI 활용",
-        sk3_sub: "반복 문서 작업 자동화 아이디어 · 프롬프트 기반 요약/정리 · 템플릿화",
-        sk4_title: "ESG/보고",
-        sk4_sub: "국내·해외 보고서 비교(예: 자동차/전기차 기업 사례) · 그린워싱 관점",
-        proof_title: "작업물로 증명하는 방식",
-        proof_sub: "아래 항목은 ‘포트폴리오 첨부 자료’로 연결하기 좋은 형태입니다.",
-        pf1: "법규/서식/별표 → 사업장 체크리스트(엑셀) 변환 예시",
-        pf2: "점검 결과(위반/시정/재발방지) 이력 관리 템플릿",
-        pf3: "ESG 보고서 비교표(지표/근거/리스크) 및 코멘트",
-        pf4: "데이터 이상값 탐색/해석 과정(그래프 + 설명)",
-        btn_export: "프로젝트 데이터(JSON) 내보내기",
-        btn_focus: "프로젝트만 보기(포커스)",
-        cert_title: "자격·교육",
-        cert_note: "* 자격증/교육 항목은 공개 가능한 정보 기준으로 작성했습니다. 정확한 명칭·취득일은 원하시면 제가 텍스트만 바꿔드릴게요.",
-        contact_title: "연락",
-        contact_sub: "아래 정보는 복사해서 사용하세요. (이메일/링크드인/깃허브 등은 본인 정보로 교체)",
-        pitch_title: "한 줄 소개(복사용)",
-        btn_edit: "문구 편집",
-        nav_about: "소개",
-        nav_exp: "경험",
-        nav_proj: "프로젝트",
-        nav_skills: "역량",
-        nav_certs: "자격/교육",
-        nav_contact: "연락",
-        theme: "테마",
-        print: "PDF",
-        footer_name: "박성곤",
-        footer_note: "Single-file HTML · Responsive · Keyboard-friendly",
-      },
-      en: {
-        name: "Seonggon Park",
-        headline: "EHS & Chemical Safety × Data/AI",
-        kicker: "Regulations → Structuring → Automation (practical EHS)",
-        hero_title: "Turning safety & compliance from documents into a working system",
-        hero_sub:
-          "With an Environmental Science background, I’ve structured recurring inspection/document workflows into data-driven, reportable outputs. I’m currently expanding my automation mindset through Microsoft AI School.",
-        mini1_title: "Target roles",
-        mini1_sub: "Environmental Safety / Chemical Safety / ESG Compliance",
-        mini2_title: "Strength",
-        mini2_sub: "Regulations → Checklists/Templates → Data → Operational process",
-        cta_projects: "View projects",
-        cta_copy: "Copy one-liner",
-        snapshot: "Quick Snapshot",
-        snap1_title: "Thesis",
-        snap1_sub: "Aquatic ecology data analysis (pattern finding/interpretation)",
-        snap2_title: "Internship",
-        snap2_sub: "EHS regulation structuring & SME ESG guidebook contribution",
-        snap3_title: "Now",
-        snap3_sub: "Microsoft AI School (from fundamentals to real use)",
-        about_title: "About",
-        about_body:
-          "I studied environmental media (air/water) and became interested in how regulations translate into field operations. During an ESG internship, I structured laws, forms, and checklists, compared domestic vs. global ESG reports, and documented greenwashing risk points. Through Microsoft AI School, I’m strengthening data handling and automation to reduce repetitive work and enable faster decisions.",
-        about_focus_title: "Focus",
-        about_focus_sub: "Chemical/Environmental Safety, ESG compliance, LCA",
-        about_style_title: "Working style",
-        about_style_sub: "I track anomalies instead of discarding them—then convert findings into structure",
-        highlights_title: "Highlights",
-        hl1_title: "ESG Internship: Guidebook & compliance structuring",
-        hl1_sub: "SME-ready checklists and documentation structure",
-        hl1_li1: "Reframed EHS laws into inspection/audit checklists and templates",
-        hl1_li2: "Designed structures that actually work in real sites",
-        hl1_li3: "Captured over-claim/greenwashing risk points",
-        hl2_title: "Thesis/Data: Aquatic indicators interpretation",
-        hl2_sub: "Pattern → hypothesis → comparative analysis",
-        hl2_li1: "Found time-clustered anomaly patterns",
-        hl2_li2: "Compared rainfall/season/dam discharge and related variables",
-        hl2_li3: "Presented insights with Excel visualizations",
-        hl3_title: "Microsoft AI School: Fundamentals → applied",
-        hl3_sub: "Automation ideas for ESG & chemical safety",
-        hl3_li1: "Learning Python fundamentals & data processing",
-        hl3_li2: "Designing automation ideas for compliance/reporting",
-        hl3_li3: "Concept: SME sustainability dashboard & photo-based logging",
-        exp_title: "Experience Timeline",
-        exp_sub: "Summarized within an appropriate disclosure range. Details available upon request.",
-        proj_title: "Projects",
-        proj_sub: "Search by keywords or filter by tags.",
-        skills_title: "Skills",
-        skills_sub: "Not ‘building AI models’, but ‘running compliance work with data’.",
-        sk1_title: "Compliance",
-        sk1_sub: "Understanding EHS regulation structure · Audit/inspection checklists",
-        sk2_title: "Data handling",
-        sk2_sub: "Excel structuring/visualization · CSV organization · basic analysis",
-        sk3_title: "Automation/AI usage",
-        sk3_sub: "Template automation ideas · prompt-driven summarization · systemization",
-        sk4_title: "ESG reporting",
-        sk4_sub: "Domestic vs. global report comparisons · greenwashing risk lens",
-        proof_title: "Proof-by-work",
-        proof_sub: "These are great attachments for a portfolio package.",
-        pf1: "Law/form/appendix → site checklist (Excel) conversion sample",
-        pf2: "Corrective action log template (nonconformity → action → prevention)",
-        pf3: "ESG report comparison matrix and commentary",
-        pf4: "Anomaly exploration note (charts + narrative)",
-        btn_export: "Export projects (JSON)",
-        btn_focus: "Focus on projects",
-        cert_title: "Certifications & Education",
-        cert_note: "* Items are written with limited public info. I can refine exact names/dates if you share them.",
-        contact_title: "Contact",
-        contact_sub: "Replace placeholders with your actual email/links.",
-        pitch_title: "One-liner (copy)",
-        btn_edit: "Edit",
-        nav_about: "About",
-        nav_exp: "Experience",
-        nav_proj: "Projects",
-        nav_skills: "Skills",
-        nav_certs: "Cert/Edu",
-        nav_contact: "Contact",
-        theme: "Theme",
-        print: "PDF",
-        footer_name: "Seonggon Park",
-        footer_note: "Single-file HTML · Responsive · Keyboard-friendly",
-      },
-    };
-
-    // Data models
-    const timelineItems = [
-      {
-        id: "ai-school",
-        title_ko: "Microsoft AI School (활동 중)",
-        title_en: "Microsoft AI School (ongoing)",
-        period: "2025–Present",
-        tags: ["ai", "data"],
-        summary_ko: "데이터 처리/자동화 기초를 실무 과제에 연결하는 학습을 진행 중입니다.",
-        summary_en: "Learning data handling and automation fundamentals and applying them to real tasks.",
-        bullets_ko: [
-          "파이썬 기초 문법 및 데이터 처리 학습(진행형)",
-          "ESG·화학안전 문서/점검 업무 자동화 아이디어 정리",
-        ],
-        bullets_en: [
-          "Python fundamentals and data processing (in progress)",
-          "Automation ideas for ESG & chemical safety documentation workflows",
-        ],
-      },
-      {
-        id: "esg-intern",
-        title_ko: "ESG 인턴십 (환경·EHS 규제/가이드북)",
-        title_en: "ESG Internship (EHS compliance & guidebook)",
-        period: "2025",
-        tags: ["esg", "safety"],
-        summary_ko: "중소기업 ESG 가이드북 제작 참여 및 환경/안전 법규를 점검 관점으로 구조화했습니다.",
-        summary_en: "Contributed to an SME ESG guidebook and structured EHS regulations into audit-ready forms.",
-        bullets_ko: [
-          "환경·안전 관련 법령 정리 및 체크리스트 형태로 재구성",
-          "국내·해외 ESG 보고서 비교를 통해 공시 리스크(그린워싱) 관점 도출",
-        ],
-        bullets_en: [
-          "Converted regulations into checklists and operational templates",
-          "Compared ESG reports and documented disclosure/greenwashing risk points",
-        ],
-      },
-      {
-        id: "thesis",
-        title_ko: "환경학 전공 · 졸업논문/연구",
-        title_en: "B.S. Environmental Science · Thesis/Research",
-        period: "Undergraduate",
-        tags: ["data"],
-        summary_ko: "수생태 데이터에서 이상 패턴을 탐색하고 원인 가설을 비교 분석했습니다.",
-        summary_en: "Explored anomaly patterns in aquatic ecology data and tested hypotheses with comparisons.",
-        bullets_ko: [
-          "이상값 패턴을 강우/계절/방류량 등과 비교하여 해석",
-          "Excel 시각화 기반으로 결과를 설명 가능한 형태로 정리",
-        ],
-        bullets_en: [
-          "Interpreted anomalies by comparing rainfall/season/discharge variables",
-          "Presented findings with Excel-based visualization",
-        ],
-      },
-    ];
-
+    // Minimal interactive portfolio (single file)
     const projects = [
       {
-        id: "sme-esg-guidebook",
-        title_ko: "중소기업 ESG 가이드북(환경·안전 파트) 구조화",
-        title_en: "SME ESG Guidebook: EHS structure",
-        tags: ["esg", "safety"],
-        desc_ko: "법규·점검 항목을 현장 사용 가능한 체크리스트/서식 구조로 재정리.",
-        desc_en: "Reorganized regulations into site-usable checklists and templates.",
-        bullets_ko: [
-          "법령 요구사항을 점검 문항(Yes/No/근거/조치)로 변환",
-          "반복 위반 포인트 중심으로 ‘운영 프로세스’ 관점 정리",
-          "현장 적용을 고려한 문서 체계/보관 방식 제안",
-        ],
-        bullets_en: [
-          "Converted requirements into audit questions (evidence/action)",
-          "Focused on recurring issues and operationalization",
-          "Suggested documentation and retention structure",
-        ],
+        id:"sme-esg-guidebook", tags:["esg","safety"],
+        title:"중소기업 ESG 가이드북(환경·안전 파트)",
+        desc:"법규 요구사항을 체크리스트/서식 구조로 재정리.",
+        bullets:["점검 문항(근거/조치 포함)으로 변환","현장 운영 프로세스 관점 정리"]
       },
       {
-        id: "report-compare",
-        title_ko: "국내·해외 ESG 보고서 비교(그린워싱 리스크 도출)",
-        title_en: "ESG report comparison (greenwashing risk lens)",
-        tags: ["esg", "data"],
-        desc_ko: "기업 2곳 보고서의 지표/근거/서술 방식 비교로 리스크 포인트 도출.",
-        desc_en: "Compared metrics/evidence/narratives across two companies’ ESG reports.",
-        bullets_ko: [
-          "지표 정의·경계(Scope)·근거자료 유무를 비교",
-          "과장 가능 구간(선언 대비 근거 부족)을 코멘트로 정리",
-        ],
-        bullets_en: [
-          "Compared metric definitions, boundaries (scope), and evidence",
-          "Flagged over-claim risks where evidence was weak",
-        ],
+        id:"report-compare", tags:["esg","data"],
+        title:"국내·해외 ESG 보고서 비교",
+        desc:"지표·근거·서술 방식 비교로 그린워싱 리스크 포인트 도출.",
+        bullets:["지표 정의/경계(Scope)/근거자료 비교","과장 가능 구간 코멘트 정리"]
       },
       {
-        id: "compliance-templates",
-        title_ko: "환경/화학안전 컴플라이언스 템플릿(초안)",
-        title_en: "EHS compliance templates (draft)",
-        tags: ["safety", "data"],
-        desc_ko: "점검 결과 이력·시정조치·재발방지까지 연결되는 관리 템플릿 설계.",
-        desc_en: "Designed templates linking findings → corrective actions → prevention.",
-        bullets_ko: [
-          "위반/근거/담당/기한/조치/재발방지 항목 표준화",
-          "사업장 ‘반복 이슈’ 트래킹을 위한 분류체계 구상",
-        ],
-        bullets_en: [
-          "Standardized fields (finding/evidence/owner/due/action/prevention)",
-          "Built a taxonomy to track recurring issues",
-        ],
+        id:"compliance-templates", tags:["safety","data"],
+        title:"환경/화학안전 관리 템플릿(초안)",
+        desc:"위반→시정→재발방지까지 연결되는 이력 관리 템플릿.",
+        bullets:["필수 항목 표준화(담당/기한/조치)","반복 이슈 트래킹 분류체계"]
       },
       {
-        id: "ai-automation-idea",
-        title_ko: "AI/자동화 아이디어: 사진 기반 기록·보고 자동화(구상)",
-        title_en: "Automation idea: photo-based logging & reporting (concept)",
-        tags: ["ai", "safety"],
-        desc_ko: "현장 사진 → 체크리스트 항목 매핑 → 기록/보고서 초안 자동 생성.",
-        desc_en: "Site photos → checklist mapping → auto-generated logs and draft reports.",
-        bullets_ko: [
-          "SME에서 가장 힘든 ‘증빙 정리’ 시간을 줄이는 방향",
-          "표준 폼 출력과 감사 대응(증빙 링크)까지 연결",
-        ],
-        bullets_en: [
-          "Reduce time spent on evidence organization for SMEs",
-          "Connect to standardized forms and audit-ready evidence links",
-        ],
+        id:"photo-logging-idea", tags:["ai","safety"],
+        title:"사진 기반 기록·보고 자동화(구상)",
+        desc:"현장 사진을 체크리스트 항목에 매핑해 기록/보고서 초안을 생성.",
+        bullets:["증빙 정리 시간을 줄이는 방향","표준 폼/감사 대응까지 연결"]
       },
     ];
 
-    const certs = [
-      {
-        id: "cert-ind-safety",
-        title_ko: "산업안전기사 (취득)",
-        title_en: "Industrial Safety Engineer (licensed)",
-        period: "—",
-        tags: ["safety"],
-        desc_ko: "안전관리 기본 체계 및 법규 이해 기반.",
-        desc_en: "Foundation in safety management systems and regulations.",
-      },
-      {
-        id: "cert-ai-school",
-        title_ko: "Microsoft AI School (활동 중)",
-        title_en: "Microsoft AI School (ongoing)",
-        period: "2025–Present",
-        tags: ["ai", "data"],
-        desc_ko: "데이터 처리/자동화 역량 강화.",
-        desc_en: "Strengthening data processing and automation skills.",
-      },
-      {
-        id: "cert-planned",
-        title_ko: "환경/안전 관련 자격 준비(진행형)",
-        title_en: "Additional EHS certifications (in progress)",
-        period: "—",
-        tags: ["safety"],
-        desc_ko: "지원 직무에 맞춰 학습/응시 계획을 세워 진행 중.",
-        desc_en: "Preparing based on target role requirements.",
-      },
-    ];
+    const $ = (s, r=document)=>r.querySelector(s);
+    const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+    const state = { filter:"all", q:"" };
 
-    // ------------------------------
-    // State
-    // ------------------------------
-    const state = {
-      lang: "ko",
-      filter: "all",
-      query: "",
-      focusProjects: false,
-    };
-
-    const $ = (sel, root = document) => root.querySelector(sel);
-    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
-    function setTheme(theme) {
+    function toast(msg){
+      const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+      clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("show"), 1500);
+    }
+    function copy(text){
+      navigator.clipboard.writeText(text).then(()=>toast("복사 완료")).catch(()=>toast("복사 실패"));
+    }
+    function setTheme(theme){
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
-      toast(theme === "light" ? "Light theme" : "Dark theme");
+    }
+    function toggleTheme(){
+      const cur=document.documentElement.getAttribute("data-theme")||"dark";
+      setTheme(cur==="dark"?"light":"dark");
     }
 
-    function toggleTheme() {
-      const cur = document.documentElement.getAttribute("data-theme") || "dark";
-      setTheme(cur === "dark" ? "light" : "dark");
-    }
-
-    function setLang(lang) {
-      state.lang = lang;
-      localStorage.setItem("lang", lang);
-      $("#langLabel").textContent = lang.toUpperCase();
-      applyI18n();
-      renderAll();
-      toast(lang === "ko" ? "한국어로 표시합니다" : "Switched to English");
-    }
-
-    function applyI18n() {
-      const dict = CONTENT[state.lang];
-      $$('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.textContent = dict[key];
+    function render(){
+      const q=state.q.trim().toLowerCase();
+      const list=projects.filter(p=>{
+        if(state.filter!=="all" && !p.tags.includes(state.filter)) return false;
+        if(!q) return true;
+        const hay=[p.id,...p.tags,p.title,p.desc,...p.bullets].join(" ").toLowerCase();
+        return hay.includes(q);
       });
-      // Update document title/description softly
-      document.title = state.lang === "ko"
-        ? "박성곤 | 환경·화학안전 × 데이터/AI 포트폴리오"
-        : "Seonggon Park | EHS & Chemical Safety × Data/AI";
+
+      $("#projectCards").innerHTML = list.length ? list.map(p=>{
+        const tag=p.tags.map(x=>({esg:"ESG",safety:"EHS",data:"Data",ai:"AI"}[x]||x)).join(" · ");
+        return `
+          <article class="pcard">
+            <div class="top">
+              <span class="tag">${tag}</span>
+              <button class="btn" type="button" data-copy="${p.id}">📋 요약</button>
+            </div>
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <ul>${p.bullets.map(x=>`<li>${x}</li>`).join("")}</ul>
+          </article>
+        `;
+      }).join("") : `<div class="muted" style="padding:6px 2px;">조건에 맞는 프로젝트가 없습니다.</div>`;
+
+      $$('[data-copy]').forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id=btn.getAttribute("data-copy");
+          const p=projects.find(x=>x.id===id);
+          if(!p) return;
+          copy(`${p.title}\n- ${p.desc}\n${p.bullets.map(b=>`- ${b}`).join("\n")}`);
+        });
+      });
     }
 
-    function toast(msg) {
-      const t = $("#toast");
-      t.textContent = msg;
-      t.classList.add("show");
-      window.clearTimeout(toast._timer);
-      toast._timer = window.setTimeout(() => t.classList.remove("show"), 1800);
-    }
+    // init
+    (function(){
+      const savedTheme=localStorage.getItem("theme");
+      const prefersLight=window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+      setTheme(savedTheme || (prefersLight?"light":"dark"));
 
-    function copy(text) {
-      navigator.clipboard.writeText(text).then(() => toast(state.lang === "ko" ? "복사 완료" : "Copied"))
-        .catch(() => toast(state.lang === "ko" ? "복사 실패(브라우저 권한 확인)" : "Copy failed"));
-    }
+      const d=new Date();
+      $("#year").textContent=String(d.getFullYear());
+      $("#lastUpdated").textContent=`Last updated: ${d.toISOString().slice(0,10)}`;
 
-    function escapeHtml(str) {
-      return String(str)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-    }
+      $("#btnTheme").addEventListener("click", toggleTheme);
+      $("#btnPrint").addEventListener("click", ()=>window.print());
 
-    function renderTimeline() {
-      const dict = CONTENT[state.lang];
-      const root = $("#timeline");
-      root.innerHTML = "";
+      let pitch = localStorage.getItem("pitch")
+        || "환경·화학안전 규제를 체크리스트·템플릿·데이터 구조로 바꿔 현장에서 굴러가게 만드는 사람입니다.";
+      $("#btnCopyPitch").addEventListener("click", ()=>copy(pitch));
+      $("#btnEditPitch").addEventListener("click", ()=>{
+        const next=prompt("한 줄 소개를 수정하세요:", pitch);
+        if(typeof next==="string" && next.trim()){
+          pitch=next.trim(); localStorage.setItem("pitch", pitch); toast("저장됨");
+        }
+      });
 
-      const items = timelineItems
-        .map(item => {
-          const title = state.lang === "ko" ? item.title_ko : item.title_en;
-          const summary = state.lang === "ko" ? item.summary_ko : item.summary_en;
-          const bullets = state.lang === "ko" ? item.bullets_ko : item.bullets_en;
-          const tagLabel = item.tags.map(t => ({
-            esg: "ESG",
-            safety: state.lang === "ko" ? "EHS/안전" : "EHS",
-            data: "Data",
-            ai: "AI/Automation",
-          }[t] || t)).join(" · ");
+      $$('[data-copy="you@example.com"]').forEach(b=>b.addEventListener("click", ()=>copy("you@example.com")));
 
-          return `
-            <article class="pcard" data-tags="${item.tags.join(' ')}">
-              <div class="top">
-                <span class="tag">${escapeHtml(tagLabel)}</span>
-                <span class="pill">${escapeHtml(item.period)}</span>
-              </div>
-              <h3>${escapeHtml(title)}</h3>
-              <p>${escapeHtml(summary)}</p>
-              <ul>
-                ${bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}
-              </ul>
-            </article>
-          `;
-        })
-        .join("");
+      $$(".filter").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          state.filter=btn.getAttribute("data-filter");
+          $$(".filter").forEach(x=>x.setAttribute("aria-pressed", String(x===btn)));
+          render();
+        });
+      });
 
-      root.innerHTML = items || `<div class="muted">${state.lang === "ko" ? "표시할 항목이 없습니다." : "No items."}</div>`;
-    }
-
-    function matchesFilter(p) {
-      const f = state.filter;
-      if (f === "all") return true;
-      return p.tags.includes(f);
-    }
-
-    function matchesQuery(p) {
-      const q = state.query.trim().toLowerCase();
-      if (!q) return true;
-      const hay = [
-        p.id,
-        p.title_ko,
-        p.title_en,
-        p.desc_ko,
-        p.desc_en,
-        ...(p.bullets_ko || []),
-        ...(p.bullets_en || []),
-        ...(p.tags || []),
-      ].join(" ").toLowerCase();
-      return hay.includes(q);
-    }
-
-    function renderProjects() {
-      const root = $("#projectCards");
-      const filtered = projects.filter(p => matchesFilter(p) && matchesQuery(p));
-
-      root.innerHTML = filtered.map(p => {
-        const title = state.lang === "ko" ? p.title_ko : p.title_en;
-        const desc = state.lang === "ko" ? p.desc_ko : p.desc_en;
-        const bullets = state.lang === "ko" ? p.bullets_ko : p.bullets_en;
-        const tagLabel = p.tags.map(t => ({
-          esg: "ESG",
-          safety: stat
+      $("#q").addEventListener("input", (e)=>{ state.q=e.target.value; render(); });
+      render();
+    })();
+  </script>
+</body>
+</html>
